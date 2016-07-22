@@ -1,0 +1,5 @@
+.imdone/
+dist/
+build/
+node_modules/
+releases/

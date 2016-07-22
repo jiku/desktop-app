@@ -1,12 +1,47 @@
 {
-  "name": "@jiku/electron",
+  "name": "jiku-desktop-app",
+  "productName": "jiku",
   "version": "0.0.1",
   "private": true,
-  "description": "jiku Electron app.",
-  "main": "index.js",
+  "description": "jiku Desktop app (Electron).",
+  "repository": "jiku/desktop-app",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron .",
+    "package": "electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all",
+    "test": "ava",
+    "postinstall": "install-app-deps",
+    "build:pack": "build --dir",
+    "build:dist": "build",
+    "build:all": "build -mwl",
+    "build:mac": "build -m",
+    "build:win": "build -w",
+    "build:win32": "build -w --ia32",
+    "build:linux": "build -l"
   },
-  "author": "",
-  "license": "MIT"
+  "build": {
+    "appId": "ca.jiku.app",
+    "app-category-type": "public.app-category.music",
+    "win": {}
+  },
+  "author": {
+    "name": "B.E. Henriksen",
+    "email": "e@jiku.ca",
+    "url": "http://jiku.ca"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 4"
+  },
+  "dependencies": {
+    "electron-debug": "^1.0.1"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "devtron": "^1.2.1",
+    "electron-builder": "^5.14.2",
+    "electron-packager": "^7.3.0",
+    "electron-prebuilt": "^1.2.8",
+    "spectron": "^3.2.6"
+  }
 }
